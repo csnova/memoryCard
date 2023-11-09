@@ -1,0 +1,17 @@
+.scoreBox {
+  display: flex;
+  justify-content: space-between;
+}
+
+.currentScoreBox,
+.highScoreBox {
+  display: flex;
+  padding: 5px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.currentScoreTitle,
+.highScoreTitle {
+  padding: 5px;
+}

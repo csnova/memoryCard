@@ -32,7 +32,7 @@ const images = [
   },
   {
     image: faBolt,
-    label: "Lightning Bolt",
+    label: "Bolt",
   },
   {
     image: faBug,
@@ -120,7 +120,7 @@ const images = [
   },
   {
     image: faSkullCrossbones,
-    label: "Skull & Crossbones",
+    label: "Skull",
   },
 ];
 

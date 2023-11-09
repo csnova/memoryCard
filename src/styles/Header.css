@@ -1,0 +1,11 @@
+.headerBox {
+  padding: 40px;
+  margin: 0px;
+  background-color: #303030;
+  border-radius: 10px;
+}
+
+.pageTitle {
+  margin: 0px;
+  padding: 0px;
+}

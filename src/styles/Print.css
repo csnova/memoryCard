@@ -1,0 +1,10 @@
+.fullPage {
+  min-width: 450px;
+  max-width: 1200px;
+  width: 80vw;
+  background-color: #3b3b3b;
+  border-radius: 15px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+/* background-color: #303030; */
