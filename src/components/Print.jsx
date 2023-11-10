@@ -7,6 +7,8 @@ import "../styles/Print.css";
 const Print = () => {
   const [imagesDeck, setImagesDeck] = useState(images);
   const [shuffledDeck, setShuffledDeck] = useState(images);
+  const [currentDeck, setCurrentDeck] = useState(images);
+  const [pickedDeck, setPickedDeck] = useState([]);
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
   const [level, setLevel] = useState(1);
@@ -14,7 +16,7 @@ const Print = () => {
   //Shuffles the deck on load and when level changes
   useEffect(() => {
     let randomDeck = [...imagesDeck];
-    let currentIndex = shuffledDeck.length;
+    let currentIndex = randomDeck.length;
     let randomIndex;
     while (currentIndex > 0) {
       randomIndex = Math.floor(Math.random() * currentIndex);
@@ -27,12 +29,45 @@ const Print = () => {
     setShuffledDeck(randomDeck);
   }, [level]);
 
-  console.log(shuffledDeck);
+  //Draw the right number of cards when deck is shuffled
+  useEffect(() => {
+    let levelDeck = [];
+    for (let i = 0; i < level * 6; i++) {
+      levelDeck = [...levelDeck, shuffledDeck[i]];
+    }
+    setCurrentDeck(levelDeck);
+  }, [shuffledDeck]);
+
+  //Shuffle Deck when correct answer is picked
+  useEffect(() => {
+    let randomDeck = [...currentDeck];
+    let currentIndex = randomDeck.length;
+    let randomIndex;
+    while (currentIndex > 0) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+      [randomDeck[currentIndex], randomDeck[randomIndex]] = [
+        randomDeck[randomIndex],
+        randomDeck[currentIndex],
+      ];
+    }
+    setCurrentDeck(randomDeck);
+  }, [pickedDeck]);
 
   return (
     <div className="fullPage">
       <Header score={score} highScore={highScore} level={level} />
-      <GameBoard imagesDeck={shuffledDeck} />
+      <GameBoard
+        imagesDeck={currentDeck}
+        score={score}
+        setScore={setScore}
+        highScore={highScore}
+        setHighScore={setHighScore}
+        level={level}
+        setLevel={setLevel}
+        pickedDeck={pickedDeck}
+        setPickedDeck={setPickedDeck}
+      />
     </div>
   );
 };
