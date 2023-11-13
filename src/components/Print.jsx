@@ -2,16 +2,20 @@ import { useEffect, useState } from "react";
 import GameBoard from "./GameBoard";
 import Header from "./Header";
 import images from "./Images";
+import Modal from "./modal";
 import "../styles/Print.css";
 
 const Print = () => {
-  const [imagesDeck, setImagesDeck] = useState(images);
+  const imagesDeck = images;
   const [shuffledDeck, setShuffledDeck] = useState(images);
   const [currentDeck, setCurrentDeck] = useState(images);
   const [pickedDeck, setPickedDeck] = useState([]);
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
   const [level, setLevel] = useState(1);
+  const [modalText, setModalText] = useState(
+    "For each level, Don't click the same image twice!"
+  );
 
   //Shuffles the deck on load and when level changes
   useEffect(() => {
@@ -57,6 +61,7 @@ const Print = () => {
   return (
     <div className="fullPage">
       <Header score={score} highScore={highScore} level={level} />
+      <Modal modalText={modalText} />
       <GameBoard
         imagesDeck={currentDeck}
         score={score}
@@ -67,6 +72,7 @@ const Print = () => {
         setLevel={setLevel}
         pickedDeck={pickedDeck}
         setPickedDeck={setPickedDeck}
+        setModalText={setModalText}
       />
     </div>
   );

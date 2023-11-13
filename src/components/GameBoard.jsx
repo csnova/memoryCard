@@ -12,6 +12,7 @@ const GameBoard = ({
   setLevel,
   pickedDeck,
   setPickedDeck,
+  setModalText,
 }) => {
   return (
     <div className="gameBoard">
@@ -29,6 +30,7 @@ const GameBoard = ({
             setLevel={setLevel}
             pickedDeck={pickedDeck}
             setPickedDeck={setPickedDeck}
+            setModalText={setModalText}
           />
         );
       })}

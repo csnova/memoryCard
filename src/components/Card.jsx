@@ -13,12 +13,17 @@ const Card = ({
   setLevel,
   pickedDeck,
   setPickedDeck,
+  setModalText,
 }) => {
+  const modal = document.getElementById("myModal");
+
   function onCardClick(e) {
     if (pickedDeck.includes(label)) {
       if (score > highScore) {
         setHighScore(score);
       }
+      modal.style.display = "block";
+      setModalText("Try Again! Level 1");
       setScore(0);
       setPickedDeck([]);
       setLevel(1);
@@ -27,8 +32,11 @@ const Card = ({
       setScore(score + 1);
     }
     if (pickedDeck.length >= 23) {
-      console.log("winner");
+      modal.style.display = "block";
+      setModalText("Winner!");
     } else if (pickedDeck.length >= level * 6 - 1) {
+      modal.style.display = "block";
+      setModalText(`Next Level! Level ${level + 1}`);
       setPickedDeck([]);
       setLevel(level + 1);
     }
