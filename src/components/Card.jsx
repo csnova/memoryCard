@@ -40,7 +40,6 @@ const Card = ({
       setPickedDeck([]);
       setLevel(level + 1);
     }
-    console.log(pickedDeck);
   }
 
   return (
